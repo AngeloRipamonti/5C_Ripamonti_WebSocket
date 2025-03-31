@@ -1,0 +1,31 @@
+{
+  "name": "websocket",
+  "version": "1.0.0",
+  "description": "© Copyright 2025 by Angelo Ripamonti - All rights reserved.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AngeloRipamonti/5C_Ripamonti_WebSocket.git"
+  },
+  "keywords": [
+    "js",
+    "websocket"
+  ],
+  "author": "Angelo Ripamonti",
+  "license": "CC-BY-NC-ND-4.0",
+  "bugs": {
+    "url": "https://github.com/AngeloRipamonti/5C_Ripamonti_WebSocket/issues"
+  },
+  "homepage": "https://github.com/AngeloRipamonti/5C_Ripamonti_WebSocket#readme",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "express": "^4.21.2",
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
+    "path": "^0.12.7",
+    "socket.io": "^4.8.1"
+  }
+}
