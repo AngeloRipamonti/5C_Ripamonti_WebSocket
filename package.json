@@ -22,6 +22,7 @@
   "homepage": "https://github.com/AngeloRipamonti/5C_Ripamonti_WebSocket#readme",
   "dependencies": {
     "body-parser": "^2.2.0",
+    "bootstrap": "^5.3.3",
     "express": "^4.21.2",
     "fs": "^0.0.1-security",
     "http": "^0.0.1-security",
