@@ -1,4 +1,6 @@
-import io from "/node_modules/socket.io/client-dist/socket.io.esm.min.js";
+//import io from "/node_modules/socket.io/client-dist/socket.io.esm.min.js";
+import { createNavigator } from "./scripts/navigator.js";
+import { createPubSub } from "./scripts/pubSub.js";
 
 const input = document.getElementById("input");
 const button = document.getElementById("sendButton");
@@ -7,7 +9,10 @@ const chat = document.getElementById("chat");
 const template = "<li class=\"list-group-item\">%MESSAGE</li>";
 const messages = [];
 
-const socket = io("localhost");
+const socket = io();
+const navigator = createNavigator();
+const pubSub = createPubSub();
+
 
 input.onkeydown = (event) => {
 
