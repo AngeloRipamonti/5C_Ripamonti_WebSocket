@@ -18,9 +18,8 @@ export function createForm(parentElement, pubSub) {
             document.getElementById("loginSubmit").onclick = async () => {
                 const usernameInput = document.getElementById("username").value;
                 pubSub.publish("isLogged", usernameInput);
+                location.href = "#chat";
                 document.getElementById("username").value = "";
-                document.getElementById("password").value = "";
-                document.getElementById("rememberMe").checked = false;
             };
         }
     }

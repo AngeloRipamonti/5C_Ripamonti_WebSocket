@@ -1,44 +1,29 @@
-//import io from "/node_modules/socket.io/client-dist/socket.io.esm.min.js";
-import { createNavigator } from "./scripts/navigator.js";
-import { createPubSub } from "./scripts/pubSub.js";
-
-const input = document.getElementById("input");
-const button = document.getElementById("sendButton");
-const chat = document.getElementById("chat");
-
-const template = "<li class=\"list-group-item\">%MESSAGE</li>";
-const messages = [];
+import io from "/node_modules/socket.io/client-dist/socket.io.esm.min.js";
+import { createNavigator } from "./components/navigator.js";
+import { createPubSub } from "./components/pubSub.js";
+import { createForm } from "./components/form.js";
+import { wsChat } from "./components/chat.js";
 
 const socket = io();
 const navigator = createNavigator();
 const pubSub = createPubSub();
+const form = createForm(document.getElementById("login"), pubSub);
+const chat = wsChat(document.getElementById("chat"), pubSub, socket)
 
+form.render();
+chat.render();
 
+/*
 input.onkeydown = (event) => {
 
     if (event.keyCode === 13) {
         event.preventDefault();
         button.click();
     }
-}
+}*/
 
-button.onclick = () => {
-    socket.emit("message", input.value);
-    input.value = "";
-}
 
-socket.on("chat", (message) => {
-    console.log(message);
-    messages.push(message);
-    render();
-})
 
-const render = () => {
-    let html = "";
-    messages.forEach((message) => {
-        const row = template.replace("%MESSAGE", message);
-        html += row;
-    });
-    chat.innerHTML = html;
-    window.scrollTo(0, document.body.scrollHeight);
-}
+
+
+
