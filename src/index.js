@@ -6,7 +6,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const { Server } = require('socket.io');
 const config = JSON.parse(fs.readFileSync(path.join(process.cwd(), "config.json")));
-const userList = [];
+let userList = [];
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -22,7 +22,7 @@ io.on('connection', (socket) => {
     console.log("socket connected: " + socket.id);
     //io.emit("chat", "new client: " + socket.id);
     socket.on('message', (message) => {
-        const response = (userList.find( user => user.socketID == socket.id).name) + ': ' + message;
+        const response = (userList.find(user => user.socketID == socket.id).name) + ': ' + message;
         console.log(response);
         io.emit("chat", response);
     });
@@ -30,12 +30,12 @@ io.on('connection', (socket) => {
         userList.push({ socketID: socket.id, name: username });
         io.emit("list", userList);
         console.log(userList)
-     })
-     socket.on("disconnect", () => {
-        userList = userList.filter( user => user.socketID != socket.id)
-        console.log(userList)
+    })
+    socket.on("disconnect", () => {
+        userList = userList.filter(user => user.socketID != socket.id)
+        io.emit("list", userList);
         console.log("socket disconnected: " + socket.id);
-     })
+    })
 });
 
 
