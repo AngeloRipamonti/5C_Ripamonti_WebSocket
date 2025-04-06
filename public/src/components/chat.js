@@ -17,7 +17,7 @@ export function wsChat(parentElement, pubSub, socket) {
                                 ${
                                     messages.map((message) => {
                                         return template.replace("%MESSAGE", message);
-                                    })
+                                    }).join("")
                                 }
                             </ul>
                             <div class="row g-2 mt-3">
@@ -34,7 +34,7 @@ export function wsChat(parentElement, pubSub, socket) {
                                     ${
                                         userList.map((user) => {
                                             return `<li class="list-group-item">${user.name}</li>`;
-                                        })
+                                        }).join("")
                                     }
                                 </ul>
                             </div>
